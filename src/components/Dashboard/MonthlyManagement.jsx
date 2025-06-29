@@ -36,6 +36,7 @@ const months = [
 
 export default function MonthlyManagement() {
   const [entries, setEntries] = useState([]);
+  const [users, setUsers] = useState([]);
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({
     user: "",
@@ -50,8 +51,15 @@ export default function MonthlyManagement() {
     setEntries(data);
   };
 
+  const fetchUsers = async () => {
+    const snap = await getDocs(collection(db, "users"));
+    const data = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    setUsers(data);
+  };
+
   useEffect(() => {
     fetchEntries();
+    fetchUsers();
   }, []);
 
   const handleAdd = async () => {
@@ -133,11 +141,22 @@ export default function MonthlyManagement() {
           <Stack spacing={2} mt={1}>
             <TextField
               label="User"
+              select
               value={form.user}
               onChange={(e) => setForm({ ...form, user: e.target.value })}
               fullWidth
               required
-            />
+            >
+              {users.length === 0 ? (
+                <MenuItem disabled>No users found</MenuItem>
+              ) : (
+                users.map((u) => (
+                  <MenuItem key={u.id} value={u.name}>
+                    {u.name}
+                  </MenuItem>
+                ))
+              )}
+            </TextField>
             <TextField
               label="Amount"
               type="number"

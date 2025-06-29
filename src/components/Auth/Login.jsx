@@ -13,12 +13,9 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-// Wine red theme
 const wineRedTheme = createTheme({
   palette: {
-    primary: {
-      main: "#722f37",
-    },
+    primary: { main: "#722f37" },
   },
 });
 
@@ -45,7 +42,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      navigate("/admin");
+      navigate("/admin/user-management"); // redirect to a valid admin page after login
     }
   }, [user, navigate]);
 
