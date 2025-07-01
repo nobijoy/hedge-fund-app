@@ -32,13 +32,13 @@ function App() {
                   <Routes>
                     <Route path="user-management" element={<UserManagement />} />
                     <Route path="monthly-management" element={<MonthlyManagement />} />
-                    <Route index element={<Navigate to="user-management" replace />} /> {/* default admin page */}
+                    <Route index element={<Navigate to="user-management" replace />} />
                   </Routes>
                 </Layout>
               </ProtectedRoute>
             }
           />
-          <Route path="*" element={<Navigate to="/" replace />} /> {/* fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </AuthProvider>

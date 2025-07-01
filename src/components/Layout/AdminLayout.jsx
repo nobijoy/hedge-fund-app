@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import UserManagement from "../Dashboard/UserManagement";
 import MonthlyManagement from "../Dashboard/MonthlyManagement";
 import { Tabs, Tab, Box } from "@mui/material";
-import Layout from "./Layout";  // import your existing Layout with header/sidebar
+import Layout from "./Layout"; 
 
 const AdminLayout = () => {
   const [tabIndex, setTabIndex] = useState(0);

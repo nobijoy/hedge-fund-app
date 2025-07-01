@@ -42,7 +42,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      navigate("/admin/user-management"); // redirect to a valid admin page after login
+      navigate("/admin/user-management");
     }
   }, [user, navigate]);
 
